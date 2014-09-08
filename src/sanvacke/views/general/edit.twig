@@ -1,0 +1,92 @@
+{# extend the parent tpl #}
+{% extends 'layout.twig' %}
+
+
+{% set pageTitle = 'detail' %}
+
+{% block pageContent %}
+
+<div id="portal-column-content">
+    <div class="container">
+        <form class="endofpage" role="form" action="{{ path('dictshop.edit', { 'pcId' : pc.id } ) }}" method="post" {{ form_enctype(editform) }} novalidate="novalidate">
+        <div class="col-md-5">
+            <div class="form-group{% if not editform.name.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.name ) }}
+                {{ form_widget(editform.name, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.name.vars.valid %}
+                    {% for error in editform.name.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.type.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.type) }}
+                {{ form_widget(editform.type, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.type.vars.valid %}
+                    {% for error in editform.type.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.price.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.price) }}
+                {{ form_widget(editform.price, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.price.vars.valid %}
+                    {% for error in editform.price.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.cpu.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.cpu) }}
+                {{ form_widget(editform.cpu, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.cpu.vars.valid %}
+                    {% for error in editform.cpu.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.gpu.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.gpu) }}
+                {{ form_widget(editform.gpu, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.gpu.vars.valid %}
+                    {% for error in editform.gpu.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.hdd.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.hdd) }}
+                {{ form_widget(editform.hdd, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.hdd.vars.valid %}
+                    {% for error in editform.hdd.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.ram.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.ram) }}
+                {{ form_widget(editform.ram, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.ram.vars.valid %}
+                    {% for error in editform.ram.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group{% if not editform.omschrijving.vars.valid %}form-group has-error{% endif %}">
+                {{ form_label(editform.omschrijving) }}
+                {{ form_widget(editform.omschrijving, { 'attr' : { 'class': 'form-control' }} ) }}
+                {% if not editform.omschrijving.vars.valid %}
+                    {% for error in editform.omschrijving.vars.errors %}
+                        <small>{{ error.message|trans|capitalize }}</small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {{ form_widget(editform._token) }}
+            <a href="{{ path('dictshop') }}">Cancel</a>
+            <input type="submit" class="btn btn-primary pull-right" value="Edit" />
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

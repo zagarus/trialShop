@@ -1,0 +1,25 @@
+{# extend the parent tpl #}
+{% extends 'layout.twig' %}
+
+
+{% set pageTitle = 'detail' %}
+
+{% block pageContent %}
+
+<div id="portal-column-content">
+    <div class="container">
+        <div class="row">
+            <h1>{{ pc.name }}</h1>
+            <p><b>type:</b> {{ pc.type }}</p>
+            <p><b>price:</b> {{ pc.price }}</p>
+            <p><b>cpu:</b> {{ pc.cpu }}</p>
+            <p><b>gpu:</b> {{ pc.gpu }}</p>
+            <p><b>hdd:</b> {{ pc.hdd }}</p>
+            <p><b>ram:</b> {{ pc.ram }}</p>
+            <p><b>omschrijving:</b> {{ pc.omschrijving }}</p>
+        </div>
+        <h1><a href="{{ path('order.review')}}">bestel nu</a></h1>
+    </div>
+</div>
+
+{% endblock %}

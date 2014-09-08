@@ -1,0 +1,42 @@
+{# extend the parent tpl #}
+{% extends 'layout.twig' %}
+
+
+{% set pageTitle = 'dictshop' %}
+
+{% block pageContent %}
+
+
+<div id="portal-column-content">
+    <div id="content">
+        <h1>Webshop UGent welcomes you!</h1>
+        <p>Kies uit onze 2 standaard pc's of specifieer zelf via Dell's premier pages </p>
+    </div>
+    <div class="container">
+        {% if user.admin %}
+            <p><a href="{{ path('dictshop.add') }}" class="btn">Add new pc</a></p>
+        {% endif %}
+        <div class="col-md-7">
+        {% for pc in pcs %}
+            <div class="col-md-10">
+                <h3><a href="{{ path('dictshop.detail', { 'pcId': pc.id }) }}">{{ pc.name }}</a></h3>
+                <p><b>type:</b> {{ pc.type }}</p>
+                <p><b>price:</b> {{ pc.price }}</p>
+                <p><b>cpu:</b> {{ pc.cpu }}</p>
+                <p><b>gpu:</b> {{ pc.gpu }}</p>
+                <p><b>hdd:</b> {{ pc.hdd }}</p>
+                <p><b>ram:</b> {{ pc.ram }}</p>
+                {% if user.admin %}
+                    <p><a href="{{ path('dictshop.edit', {'pcId': pc.id}) }}">Edit pc</a></p>
+                    <p><a href="{{ path('dictshop.delete', {'pcId': pc.id}) }}">delete pc</a></p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-10">
+            <h3><a href="{{ path('dictshop.premier') }}">Bestellen via e-quote</a></h3>
+            <p>Customize your pc</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
